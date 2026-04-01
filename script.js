@@ -5,7 +5,7 @@ async function getWeather(location) {
         const weather = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + location + '?unitGroup=uk&key=8NGT5AXWUHYCEYFBXN5CDWFY2')
         const data = await weather.json();
         console.log(data.currentConditions.temp);
-        showWeather(data.currentConditions.temp);
+        showWeather(location, data.currentConditions.temp);
     } catch (error) {
         console.log(error);
         alert("Not a valid location");
@@ -19,9 +19,15 @@ button.addEventListener("click", () => {
     getWeather(location)
 });
 
-function showWeather(temp) {
+function showWeather(location, temp) {
+    const placename = document.createElement("h1");
+    placename.textContent = location; 
     const weather = document.createElement("p");
     weather.textContent = temp;
     container.innerHTML = "";
+    container.appendChild(placename);
     container.appendChild(weather);
 }
+
+
+getWeather("london");
