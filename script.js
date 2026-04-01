@@ -8,6 +8,7 @@ async function getWeather(location) {
         showWeather(data.currentConditions.temp);
     } catch (error) {
         console.log(error);
+        alert("Not a valid location");
     }
     
 }   
