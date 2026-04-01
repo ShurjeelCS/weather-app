@@ -1,8 +1,8 @@
 async function getWeather(location) {
     try {
-        const weather = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + location + '?key=8NGT5AXWUHYCEYFBXN5CDWFY2')
+        const weather = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + location + '?unitGroup=uk&key=8NGT5AXWUHYCEYFBXN5CDWFY2')
         const data = await weather.json();
-        console.log(data);
+        console.log(data.currentConditions.temp);
     } catch (error) {
         console.log(error);
     }
